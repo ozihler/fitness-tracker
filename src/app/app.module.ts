@@ -12,6 +12,7 @@ import { MuscleGroupSelection } from './muscle-group-selection/muscle-group-sele
 import {ReactiveFormsModule} from "@angular/forms";
 import { CreateExerciseComponent } from './create-exercise/create-exercise.component';
 import { AddExerciseComponent } from './add-exercise/add-exercise.component';
+import { CreateSetComponent } from './create-set/create-set.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AddExerciseComponent } from './add-exercise/add-exercise.component';
     WorkoutDetailsView,
     MuscleGroupSelection,
     CreateExerciseComponent,
-    AddExerciseComponent
+    AddExerciseComponent,
+    CreateSetComponent
   ],
   imports: [
     BrowserModule,

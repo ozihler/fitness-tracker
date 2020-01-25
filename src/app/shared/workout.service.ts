@@ -4,6 +4,8 @@ import {MuscleGroup} from "./muscle-group";
 import {MuscleGroupFactory} from "./muscle-group.factory";
 import {Workout} from "./workout";
 import {WorkoutFactory} from "./workout.factory";
+import {Exercise} from "./exercise";
+import {ExerciseFactory} from "./ExerciseFactory";
 
 
 @Injectable({
@@ -31,6 +33,25 @@ export class WorkoutService {
     });
 
     return from([createdMuscleGroups]);
+  }
+
+  newExercise(muscleGroupName: string, exerciseNames: string): Observable<Exercise[]> {
+    let createdExercises: Exercise[] = [];
+    exerciseNames
+      .split(/[ ;,.]+/)
+      .forEach(exerciseName => {
+        if (exerciseName.trim().length > 0) {
+          createdExercises.push(ExerciseFactory.from({name: exerciseName.trim()}));
+        }
+      });
+
+    createdExercises.forEach(exercise => {
+      this.muscleGroups
+        .filter(m => m.name === muscleGroupName)
+        .push(exercise);
+    });
+
+    return from([createdExercises]);
   }
 
   fetchMuscleGroups(): Observable<MuscleGroup[]> {

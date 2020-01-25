@@ -7,7 +7,7 @@ import {Location} from "@angular/common";
   selector: 'app-create-muscle-group',
   template: `
     <form [formGroup]="createMuscleGroup"
-          (ngSubmit)="submitMuscleGroup()">
+          (ngSubmit)="create()">
       <input formControlName="muscleGroup" type="text">
       <button type="submit">Ok</button>
     </form>
@@ -30,7 +30,7 @@ export class CreateMuscleGroupComponent implements OnInit {
     });
   }
 
-  submitMuscleGroup() {
+  create() {
     if (this.hasEnteredAnyMuscleGroupName()) {
       this.workoutService.newMuscleGroup(this.currentMuscleGroupName())
         .subscribe(this.goBackInHistory());

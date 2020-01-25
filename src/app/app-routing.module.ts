@@ -5,7 +5,7 @@ import {WorkoutsOverview} from "./workouts-overview/workouts-overview.component"
 import {WorkoutOverview} from "./workout-overview/workout-overview.component";
 import {CreateMuscleGroupComponent} from "./create-muscle-group/create-muscle-group.component";
 import {CreateExerciseComponent} from "./create-exercise/create-exercise.component";
-import {AddExerciseComponent} from "./add-exercise/add-exercise.component";
+import {CreateSetComponent} from "./create-set/create-set.component";
 
 
 const routes: Routes = [
@@ -37,7 +37,8 @@ const routes: Routes = [
   {path: "workouts-overview", component: WorkoutsOverview},
   {path: "workouts/:id", component: WorkoutOverview},
   {path: "create-muscle-group", component: CreateMuscleGroupComponent},
-  {path: "create-exercise", component: CreateExerciseComponent},
+  {path: "create-exercise/:muscleGroupName", component: CreateExerciseComponent},
+  {path: "create-set", component: CreateSetComponent},
 
 
   {path: "", redirectTo: "workout-selection", pathMatch: "full"}
