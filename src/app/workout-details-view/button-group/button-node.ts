@@ -13,6 +13,10 @@ export class ButtonNode {
     return sizeOf(this._children) <= 0
   }
 
+  hasChildren(): boolean {
+    return !this.isLeaf();
+  }
+
   numberOfChildren(): number {
     return sizeOf(this._children);
   }

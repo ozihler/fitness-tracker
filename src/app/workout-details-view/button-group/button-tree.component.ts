@@ -18,7 +18,7 @@ import {ButtonNode} from "./button-node";
         <button class="uk-button">[+]</button>
       </div>
     </div>
-    <div *ngIf="showChildren()">
+    <div *ngIf="shouldShowChildren()">
       <div *ngFor="let child of this.node.children">
         <app-button-group
           [node]="child">
@@ -39,9 +39,12 @@ export class ButtonTreeComponent implements OnInit {
     this.toggles[this.node.name] = false;
   }
 
-  showChildren() {
-    return this.toggles[this.node.name]
-      && !this.node.isLeaf();
+  shouldShowChildren() {
+    return this.isEnabled() && this.node.hasChildren();
+  }
+
+  private isEnabled() {
+    return this.toggles[this.node.name];
   }
 
   toggleNode() {
