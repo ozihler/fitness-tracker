@@ -8,7 +8,11 @@ import {Location} from "@angular/common";
   template: `
     <form [formGroup]="createMuscleGroup"
           (ngSubmit)="create()">
-      <input formControlName="muscleGroup" type="text">
+      <div class="uk-margin">
+        <input class="uk-input"
+               formControlName="muscleGroup"
+               type="text">
+      </div>
       <button type="submit">Ok</button>
     </form>
     <div>{{currentMuscleGroupName()}}</div>

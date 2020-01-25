@@ -1,4 +1,4 @@
-import {WorkoutRaw} from "./WorkoutRaw";
+import {WorkoutRaw} from "./workout-raw";
 import {Workout} from "./workout";
 import {MuscleGroupFactory} from "./muscle-group.factory";
 

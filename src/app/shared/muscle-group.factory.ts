@@ -1,6 +1,6 @@
 import {MuscleGroupRaw} from "./muscle-group-raw";
 import {MuscleGroup} from "./muscle-group";
-import {ExerciseFactory} from "./ExerciseFactory";
+import {ExerciseFactory} from "./exercise.factory";
 
 export class MuscleGroupFactory {
 

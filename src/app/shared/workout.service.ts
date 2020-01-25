@@ -5,7 +5,7 @@ import {MuscleGroupFactory} from "./muscle-group.factory";
 import {Workout} from "./workout";
 import {WorkoutFactory} from "./workout.factory";
 import {Exercise} from "./exercise";
-import {ExerciseFactory} from "./ExerciseFactory";
+import {ExerciseFactory} from "./exercise.factory";
 
 
 @Injectable({

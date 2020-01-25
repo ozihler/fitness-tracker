@@ -13,6 +13,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { CreateExerciseComponent } from './create-exercise/create-exercise.component';
 import { AddExerciseComponent } from './add-exercise/add-exercise.component';
 import { CreateSetComponent } from './create-set/create-set.component';
+import { FitScreenPipe } from './shared/fit-screen.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CreateSetComponent } from './create-set/create-set.component';
     MuscleGroupSelection,
     CreateExerciseComponent,
     AddExerciseComponent,
-    CreateSetComponent
+    CreateSetComponent,
+    FitScreenPipe
   ],
   imports: [
     BrowserModule,
