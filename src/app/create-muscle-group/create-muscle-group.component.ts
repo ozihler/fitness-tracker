@@ -11,7 +11,7 @@ import {Location} from "@angular/common";
       <input formControlName="muscleGroup" type="text">
       <button type="submit">Ok</button>
     </form>
-    <div>{{createMuscleGroup.get('muscleGroup').value}}</div>
+    <div>{{currentMuscleGroupName()}}</div>
   `,
   styles: []
 })
@@ -19,7 +19,8 @@ export class CreateMuscleGroupComponent implements OnInit {
 
   private createMuscleGroup: FormGroup;
 
-  constructor(private workoutService: WorkoutService, private location: Location) {
+  constructor(private workoutService: WorkoutService,
+              private location: Location) {
 
   }
 
@@ -30,12 +31,18 @@ export class CreateMuscleGroupComponent implements OnInit {
   }
 
   submitMuscleGroup() {
-    let muscleGroupName = this.createMuscleGroup.get('muscleGroup').value;
-    if (!muscleGroupName.trim()) {
-      return;
+    if (this.hasEnteredAnyMuscleGroupName()) {
+      this.workoutService.newMuscleGroup(this.currentMuscleGroupName())
+        .subscribe(this.goBackInHistory());
     }
-    this.workoutService.newMuscleGroup(muscleGroupName)
-      .subscribe(this.goBackInHistory());
+  }
+
+  private hasEnteredAnyMuscleGroupName() {
+    return !!this.currentMuscleGroupName();
+  }
+
+  private currentMuscleGroupName() {
+    return this.createMuscleGroup.get('muscleGroup').value.trim();
   }
 
   private goBackInHistory() {
