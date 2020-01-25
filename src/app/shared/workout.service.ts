@@ -43,4 +43,57 @@ export class WorkoutService {
       muscleGroups: []
     })]);
   }
+
+  static dummyData() {
+    return WorkoutFactory.fromRaw({
+      id: WorkoutService.idCounter++,
+      muscleGroups: [
+        MuscleGroupFactory.from({
+          name: "Chest",
+          exercises: [
+            {
+              name: "Bench Press",
+              sets: [
+                {repetitions: 12, weight: 50, waitingTime: 45},
+                {repetitions: 12, weight: 40, waitingTime: 45},
+                {repetitions: 12, weight: 40, waitingTime: 45}
+              ]
+            },
+            {
+              name: "Dumbbell Bench Press",
+              sets: [
+                {repetitions: 12, weight: 20, waitingTime: 45},
+                {repetitions: 11, weight: 60, waitingTime: 45},
+                {repetitions: 10, weight: 60, waitingTime: 45}
+              ]
+            },
+            {
+              name: "Flying Dumbbells",
+              sets: [
+                {repetitions: 12, weight: 65, waitingTime: 45},
+                {repetitions: 12, weight: 60, waitingTime: 45},
+                {repetitions: 10, weight: 60, waitingTime: 45}
+              ]
+            }
+          ]
+        }),
+        MuscleGroupFactory.from({
+          name: "Triceps",
+          exercises: [
+            {name: "Lat Pulldown"},
+            {name: "Lat Low Overhead"},
+            {name: "Inverted Dips"}
+          ]
+        }),
+        MuscleGroupFactory.from({
+          name: "Shoulders",
+          exercises: [
+            {name: "Arnold Press"},
+            {name: "Combined Side Front"},
+            {name: "Wide row"}
+          ]
+        })
+      ]
+    });
+  }
 }

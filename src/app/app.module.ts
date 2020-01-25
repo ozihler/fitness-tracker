@@ -7,7 +7,7 @@ import { WorkoutSelectionComponent } from './workout-selection/workout-selection
 import { WorkoutsOverview } from './workouts-overview/workouts-overview.component';
 import { WorkoutOverview } from './workout-overview/workout-overview.component';
 import { CreateMuscleGroupComponent } from './create-muscle-group/create-muscle-group.component';
-import { MuscleGroupDisplayComponent } from './muscle-group-display/muscle-group-display.component';
+import { WorkoutDetailsView } from './muscle-group-display/workout-details-view.component';
 import { MuscleGroupSelection } from './muscle-group-selection/muscle-group-selection.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { CreateExerciseComponent } from './create-exercise/create-exercise.component';
@@ -20,7 +20,7 @@ import { AddExerciseComponent } from './add-exercise/add-exercise.component';
     WorkoutsOverview,
     WorkoutOverview,
     CreateMuscleGroupComponent,
-    MuscleGroupDisplayComponent,
+    WorkoutDetailsView,
     MuscleGroupSelection,
     CreateExerciseComponent,
     AddExerciseComponent

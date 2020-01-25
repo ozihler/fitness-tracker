@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MuscleGroupDisplayComponent } from './muscle-group-display.component';
+import { WorkoutDetailsView } from './workout-details-view.component';
 
-describe('MuscleGroupDisplayComponent', () => {
-  let component: MuscleGroupDisplayComponent;
-  let fixture: ComponentFixture<MuscleGroupDisplayComponent>;
+describe('WorkoutDetailsViewComponent', () => {
+  let component: WorkoutDetailsView;
+  let fixture: ComponentFixture<WorkoutDetailsView>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MuscleGroupDisplayComponent ]
+      declarations: [ WorkoutDetailsView ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MuscleGroupDisplayComponent);
+    fixture = TestBed.createComponent(WorkoutDetailsView);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

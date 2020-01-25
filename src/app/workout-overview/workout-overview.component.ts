@@ -6,9 +6,17 @@ import {MuscleGroup} from "../shared/muscle-group";
   selector: 'app-workout',
   template: `
     <div>{{title}}</div>
-    <app-muscle-group-display [selectedMuscleGroups]="selectedMuscleGroups"></app-muscle-group-display>
-    <app-muscle-group-selection [muscleGroups]="muscleGroups"
-                                (selectMuscleGroup)="selectMuscleGroups($event)"></app-muscle-group-selection>
+    =============================
+    <app-workout-details-view
+      [selectedMuscleGroups]="selectedMuscleGroups">
+    </app-workout-details-view>
+
+    =============================
+    <app-muscle-group-selection
+      [muscleGroups]="muscleGroups"
+      (selectMuscleGroup)="selectMuscleGroups($event)">
+    </app-muscle-group-selection>
+    =============================
     <button routerLink="/create-muscle-group">Create Muscle Group</button>
   `,
   styles: []
@@ -26,6 +34,8 @@ export class WorkoutOverview implements OnInit {
       .subscribe(muscleGroups => {
         this.muscleGroups = muscleGroups;
       })
+
+    this.selectedMuscleGroups = WorkoutService.dummyData().muscleGroups;
   }
 
   selectMuscleGroups(muscleGroup: MuscleGroup) {
