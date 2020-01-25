@@ -119,14 +119,14 @@ export class WorkoutService {
   }
 
   deleteMuscleGroup(muscleGroup: MuscleGroup) {
-
+    console.log("Delete muscle group ", muscleGroup.name);
   }
 
   deleteExercise(exercise: Exercise) {
-
+    console.log("Delete exercise: ", exercise.name)
   }
 
   deleteSet(exercise: Exercise, indexInSets: number) {
-
+    console.log("Delete set ", exercise.name, indexInSets);
   }
 }
