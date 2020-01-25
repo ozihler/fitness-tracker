@@ -8,7 +8,7 @@ import {ButtonNode} from "./button-node";
       <div class="uk-width-1-5">
         <button class="uk-button">[x]</button>
       </div>
-      <div class="uk-width-3-5">
+      <div class="uk-width-2-5">
         <button class="uk-button uk-width-1-1 "
                 (click)="toggleNode()">{{node.name | fitScreen }}
           <span *ngIf="!node.isLeaf()">({{node.numberOfChildren()}})</span>
@@ -16,6 +16,9 @@ import {ButtonNode} from "./button-node";
       </div>
       <div class="uk-width-1-5">
         <button *ngIf="!node.isLeaf()" class="uk-button">[+]</button>
+      </div>
+      <div class="uk-width-1-5">
+        <button class="uk-button">[E]</button>
       </div>
     </div>
     <div *ngIf="shouldShowChildren()">

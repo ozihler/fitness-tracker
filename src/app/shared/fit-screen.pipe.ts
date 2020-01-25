@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
   name: 'fitScreen'
@@ -8,10 +8,10 @@ export class FitScreenPipe implements PipeTransform {
   private readonly maxNumberOfSigns = 6;
 
   transform(text: string): string {
-    if (!this.exists(text) || !this.isLargerThanFitting(text)) {
+    if (!!!text || !this.isLargerThanFitting(text)) {
       return text;
     }
-    return this.removeTooLargePartOf(text) + "...";
+    return `${this.removeTooLargePartOf(text)}...`;
   }
 
   private removeTooLargePartOf(text: string) {
@@ -20,9 +20,5 @@ export class FitScreenPipe implements PipeTransform {
 
   private isLargerThanFitting(text: string) {
     return text.length > this.maxNumberOfSigns;
-  }
-
-  private exists(text: string) {
-    return !!text;
   }
 }
