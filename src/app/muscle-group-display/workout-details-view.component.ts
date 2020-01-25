@@ -1,25 +1,29 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MuscleGroup} from "../shared/muscle-group";
+import {Exercise} from "../shared/exercise";
 
 @Component({
   selector: 'app-workout-details-view',
   template: `
     <div *ngFor="let muscleGroup of selectedMuscleGroups">
-      <button (click)="toggleExercises(muscleGroup.name)">{{muscleGroup.name}}<span
-        *ngIf="!shouldShowExercisesOf(muscleGroup)"> ({{muscleGroup.exercises.length}})</span></button>
+      <button (click)="toggle(muscleGroup.name)">{{muscleGroup.name}} <span
+        *ngIf="!shouldShowExercisesOf(muscleGroup)">({{muscleGroup.exercises.length}})</span></button>
 
       <div *ngFor="let exercise of muscleGroup.exercises">
         <div *ngIf="shouldShowExercisesOf(muscleGroup)">
-          <button>{{exercise.name}}</button>
-          <div *ngFor="let set of exercise.sets">
-            <span>{{set.repetitions}}</span>
-            <span> [reps]</span>
-            <span> | </span>
-            <span>{{set.weight}}</span>
-            <span> [kg]</span>
-            <span> | </span>
-            <span>{{set.waitingTime}}</span>
-            <span> [s]</span>
+          <button (click)="toggle(exercise.name)">{{exercise.name}} <span
+            *ngIf="!shouldShowSetsOf(exercise)">({{numberOfSetsIn(exercise)}})</span></button>
+          <div *ngIf="shouldShowSetsOf(exercise)">
+            <div *ngFor="let set of exercise.sets">
+              <span>{{set.repetitions}}</span>
+              <span> [reps]</span>
+              <span> | </span>
+              <span>{{set.weight}}</span>
+              <span> [kg]</span>
+              <span> | </span>
+              <span>{{set.waitingTime}}</span>
+              <span> [s]</span>
+            </div>
           </div>
         </div>
       </div>
@@ -50,12 +54,23 @@ export class WorkoutDetailsView implements OnInit {
     )
   }
 
-  toggleExercises(muscleGroupName: string) {
-    this.toggles[muscleGroupName] = !this.toggles[muscleGroupName];
+  toggle(name: string) {
+    this.toggles[name] = !this.toggles[name];
   }
 
   shouldShowExercisesOf(muscleGroup: MuscleGroup) {
-    return this.toggles[muscleGroup.name];
+    return this.shouldShowToggleOf(muscleGroup.name);
   }
 
+  shouldShowSetsOf(exercise: Exercise) {
+    return this.shouldShowToggleOf(exercise.name) && this.numberOfSetsIn(exercise) > 0;
+  }
+
+  private shouldShowToggleOf(name: string): boolean {
+    return this.toggles[name];
+  }
+
+  numberOfSetsIn(exercise: Exercise) {
+    return exercise.sets ? exercise.sets.length : 0;
+  }
 }
