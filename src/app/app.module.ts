@@ -14,7 +14,7 @@ import { CreateExerciseComponent } from './create-exercise/create-exercise.compo
 import { AddExerciseComponent } from './add-exercise/add-exercise.component';
 import { CreateSetComponent } from './create-set/create-set.component';
 import { FitScreenPipe } from './shared/fit-screen.pipe';
-import { ButtonGroupComponent } from './workout-details-view/button-group/button-group.component';
+import { ButtonTreeComponent } from './workout-details-view/button-group/button-tree.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import { ButtonGroupComponent } from './workout-details-view/button-group/button
     AddExerciseComponent,
     CreateSetComponent,
     FitScreenPipe,
-    ButtonGroupComponent
+    ButtonTreeComponent
   ],
   imports: [
     BrowserModule,
