@@ -40,7 +40,6 @@ export class CreateMuscleGroupComponent implements OnInit {
 
   private goBackInHistory() {
     return () => {
-      // try
       this.location.back();
     }
   }
