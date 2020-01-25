@@ -1,8 +1,10 @@
 import {sizeOf} from "../../shared/array-utils";
+import {Id} from "../../shared/id";
 
 export class ButtonNode {
 
-  constructor(private _name: string,
+  constructor(private _id: Id,
+              private _name: string,
               private _children: ButtonNode[],
               private _level: number) {
 
@@ -31,5 +33,9 @@ export class ButtonNode {
 
   get level(): number {
     return this._level;
+  }
+
+  get id(): Id {
+    return this._id;
   }
 }

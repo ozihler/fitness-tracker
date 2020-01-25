@@ -117,4 +117,16 @@ export class WorkoutService {
       ]
     });
   }
+
+  deleteMuscleGroup(muscleGroup: MuscleGroup) {
+
+  }
+
+  deleteExercise(exercise: Exercise) {
+
+  }
+
+  deleteSet(exercise: Exercise, indexInSets: number) {
+
+  }
 }

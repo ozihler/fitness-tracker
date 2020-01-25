@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ButtonNode} from "./button-node";
+import {Id} from "../../shared/id";
 
 @Component({
   selector: 'app-button-group',
@@ -14,7 +15,7 @@ import {ButtonNode} from "./button-node";
         </button>
       </div>
       <div class="uk-width-2-5">
-        <button class="" routerLink="">[x]</button>
+        <button class="" (click)="deleteNode(node.id)">[x]</button>
         <button *ngIf="!node.isLeaf()" class="">[+]</button>
         <button class=" ">[E]</button>
       </div>
@@ -22,6 +23,7 @@ import {ButtonNode} from "./button-node";
     <div *ngIf="shouldShowChildren()">
       <div *ngFor="let child of this.node.children">
         <app-button-group
+          (deleteNodeEvent)="deleteNode($event)"
           [node]="child">
         </app-button-group>
       </div>
@@ -30,8 +32,10 @@ import {ButtonNode} from "./button-node";
 })
 export class ButtonTreeComponent implements OnInit {
   @Input() private node: ButtonNode;
+  @Output() private deleteNodeEvent = new EventEmitter<Id>();
 
   private toggles = [];
+  private levelClasses = {1: 'uk-button-secondary', 2: 'uk-button-primary', 3: 'uk-button-default'};
 
   constructor() {
   }
@@ -53,13 +57,10 @@ export class ButtonTreeComponent implements OnInit {
   }
 
   getLevelClass() {
-    switch (this.node.level) {
-      case 1:
-        return 'uk-button-secondary';
-      case 2:
-        return 'uk-button-primary';
-      case 3:
-        return 'uk-button-default';
-    }
+    return this.levelClasses[this.node.level];
+  }
+
+  deleteNode(id: Id) {
+    this.deleteNodeEvent.emit(id);
   }
 }
