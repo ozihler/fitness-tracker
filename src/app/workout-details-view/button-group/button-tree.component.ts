@@ -7,13 +7,14 @@ import {ButtonNode} from "./button-node";
     <div class="uk-grid uk-grid-collapse">
 
       <div class="uk-width-3-5">
-        <button class="uk-button uk-width-1-1 uk-text-truncate" [ngClass]="getLevelClass()"
+        <button class="uk-button uk-width-1-1 uk-text-truncate"
+                [ngClass]="getLevelClass()"
                 (click)="toggleNode()">{{node.name}}
           <span *ngIf="!node.isLeaf()">({{node.numberOfChildren()}})</span>
         </button>
       </div>
       <div class="uk-width-2-5">
-        <button class=" ">[x]</button>
+        <button class="" routerLink="">[x]</button>
         <button *ngIf="!node.isLeaf()" class="">[+]</button>
         <button class=" ">[E]</button>
       </div>

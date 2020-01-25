@@ -4,8 +4,13 @@ import {Exercise} from "./exercise";
 import {Set} from "./set"
 
 export class SubtreeFactory {
+  // todo: handle calls from x + E buttons
+
   static from(muscleGroup: MuscleGroup): ButtonNode {
-    return new ButtonNode(muscleGroup.name, SubtreeFactory.formatExercises(muscleGroup.exercises), 1);
+    return new ButtonNode(
+      muscleGroup.name,
+      SubtreeFactory.formatExercises(muscleGroup.exercises),
+      1);
   }
 
   private static formatExercises(exercises: Exercise[]) {
