@@ -15,7 +15,7 @@ import {ButtonNode} from "./button-node";
         </button>
       </div>
       <div class="uk-width-1-5">
-        <button class="uk-button">[+]</button>
+        <button *ngIf="!node.isLeaf()" class="uk-button">[+]</button>
       </div>
     </div>
     <div *ngIf="shouldShowChildren()">
