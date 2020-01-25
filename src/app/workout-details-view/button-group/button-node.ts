@@ -1,12 +1,11 @@
 import {sizeOf} from "../../shared/array-utils";
 
 export class ButtonNode {
-  private _name: string;
-  private _children: ButtonNode[];
 
-  constructor(name: string, children: ButtonNode[]) {
-    this._name = name;
-    this._children = children;
+  constructor(private _name: string,
+              private _children: ButtonNode[],
+              private _level: number) {
+
   }
 
   isLeaf(): boolean {
@@ -27,5 +26,10 @@ export class ButtonNode {
 
   get children(): ButtonNode[] {
     return this._children;
+  }
+
+
+  get level(): number {
+    return this._level;
   }
 }

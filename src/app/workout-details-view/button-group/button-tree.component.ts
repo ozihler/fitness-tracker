@@ -5,20 +5,17 @@ import {ButtonNode} from "./button-node";
   selector: 'app-button-group',
   template: `
     <div class="uk-grid uk-grid-collapse">
-      <div class="uk-width-1-5">
-        <button class="uk-button">[x]</button>
-      </div>
-      <div class="uk-width-2-5">
-        <button class="uk-button uk-width-1-1 "
-                (click)="toggleNode()">{{node.name | fitScreen }}
+
+      <div class="uk-width-3-5">
+        <button class="uk-button uk-width-1-1 uk-text-truncate" [ngClass]="getLevelClass()"
+                (click)="toggleNode()">{{node.name}}
           <span *ngIf="!node.isLeaf()">({{node.numberOfChildren()}})</span>
         </button>
       </div>
-      <div class="uk-width-1-5">
-        <button *ngIf="!node.isLeaf()" class="uk-button">[+]</button>
-      </div>
-      <div class="uk-width-1-5">
-        <button class="uk-button">[E]</button>
+      <div class="uk-width-2-5">
+        <button class=" ">[x]</button>
+        <button *ngIf="!node.isLeaf()" class="">[+]</button>
+        <button class=" ">[E]</button>
       </div>
     </div>
     <div *ngIf="shouldShowChildren()">
@@ -52,5 +49,16 @@ export class ButtonTreeComponent implements OnInit {
 
   toggleNode() {
     this.toggles[this.node.name] = !this.toggles[this.node.name];
+  }
+
+  getLevelClass() {
+    switch (this.node.level) {
+      case 1:
+        return 'uk-button-secondary';
+      case 2:
+        return 'uk-button-primary';
+      case 3:
+        return 'uk-button-default';
+    }
   }
 }
