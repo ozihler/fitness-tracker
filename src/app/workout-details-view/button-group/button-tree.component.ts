@@ -50,6 +50,7 @@ export class ButtonTreeComponent implements OnInit {
   }
 
   shouldShowChildren() {
+    console.warn("Node " + this.node.name + " isEnabled? " + this.isEnabled() + ", hasChildren? " + this.node.hasChildren());
     return this.isEnabled() && this.node.hasChildren();
   }
 
