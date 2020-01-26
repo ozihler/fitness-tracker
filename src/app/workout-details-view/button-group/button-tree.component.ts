@@ -17,14 +17,14 @@ import {Id} from "../../shared/id";
 
       <div class="uk-width-2-5">
         <button class="" (click)="deleteNode(node.id)">[x]</button>
-        <button *ngIf="!node.isDeepestLevel()" class="">[+]</button>
+        <button *ngIf="!node.isDeepestLevel()" class="" [routerLink]="'node/'+node.id.value+'/create-child'">[+]
+        </button>
         <button class=" ">[E]</button>
       </div>
 
     </div>
 
     <div *ngIf="shouldShowChildren()">
-
       <div *ngFor="let child of this.node.children">
         <app-button-group
           (deleteNodeEvent)="deleteNode($event)"
@@ -40,7 +40,6 @@ export class ButtonTreeComponent implements OnInit {
   @Output() private deleteNodeEvent = new EventEmitter<Id>();
 
   private toggles = [];
-  private levelClasses = {1: 'uk-button-secondary', 2: 'uk-button-primary', 3: 'uk-button-default'};
 
   constructor() {
   }
@@ -50,7 +49,6 @@ export class ButtonTreeComponent implements OnInit {
   }
 
   shouldShowChildren() {
-    console.warn("Node " + this.node.name + " isEnabled? " + this.isEnabled() + ", hasChildren? " + this.node.hasChildren());
     return this.isEnabled() && this.node.hasChildren();
   }
 
@@ -63,14 +61,10 @@ export class ButtonTreeComponent implements OnInit {
   }
 
   getLevelClass() {
-    return this.levelClasses[this.node.level];
+    return (ButtonNode.LEVEL_CLASSES)[this.node.level];
   }
 
   deleteNode(id: Id) {
     this.deleteNodeEvent.emit(id);
-  }
-
-  isDeepestLevel() {
-    return ButtonNode.MAX_LEVEL;
   }
 }
