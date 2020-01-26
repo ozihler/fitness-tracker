@@ -33,7 +33,7 @@ export class WorkoutOverview implements OnInit {
     this.workoutService.fetchMuscleGroups()
       .subscribe(muscleGroups => {
         this.muscleGroups = muscleGroups;
-      })
+      });
 
     this.selectedMuscleGroups = WorkoutService.dummyData().muscleGroups;
   }
@@ -43,3 +43,4 @@ export class WorkoutOverview implements OnInit {
     this.muscleGroups = this.muscleGroups.filter(e => e.name !== muscleGroup.name);
   }
 }
+

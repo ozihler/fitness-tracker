@@ -14,19 +14,24 @@ import {Id} from "../../shared/id";
           <span *ngIf="!node.isLeaf()">({{node.numberOfChildren()}})</span>
         </button>
       </div>
+
       <div class="uk-width-2-5">
         <button class="" (click)="deleteNode(node.id)">[x]</button>
-        <button *ngIf="!node.isLeaf()" class="">[+]</button>
+        <button *ngIf="!node.isDeepestLevel()" class="">[+]</button>
         <button class=" ">[E]</button>
       </div>
+
     </div>
+
     <div *ngIf="shouldShowChildren()">
+
       <div *ngFor="let child of this.node.children">
         <app-button-group
           (deleteNodeEvent)="deleteNode($event)"
           [node]="child">
         </app-button-group>
       </div>
+
     </div>
   `
 })
@@ -62,5 +67,9 @@ export class ButtonTreeComponent implements OnInit {
 
   deleteNode(id: Id) {
     this.deleteNodeEvent.emit(id);
+  }
+
+  isDeepestLevel() {
+    return ButtonNode.MAX_LEVEL;
   }
 }

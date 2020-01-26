@@ -2,12 +2,12 @@ import {sizeOf} from "../../shared/array-utils";
 import {Id} from "../../shared/id";
 
 export class ButtonNode {
+  static MAX_LEVEL: number = 3;
 
   constructor(private _id: Id,
               private _name: string,
               private _children: ButtonNode[],
               private _level: number) {
-
   }
 
   isLeaf(): boolean {
@@ -20,6 +20,10 @@ export class ButtonNode {
 
   numberOfChildren(): number {
     return sizeOf(this._children);
+  }
+
+  isDeepestLevel(): boolean {
+    return this.level === ButtonNode.MAX_LEVEL;
   }
 
   get name(): string {
