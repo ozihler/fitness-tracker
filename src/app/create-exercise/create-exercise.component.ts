@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {WorkoutService} from "../shared/workout.service";
 import {ActivatedRoute} from "@angular/router";
 import {Location} from "@angular/common";
@@ -22,13 +22,12 @@ export class CreateExerciseComponent implements OnInit {
 
   constructor(private workoutService: WorkoutService,
               private route: ActivatedRoute,
-              private location: Location) {
+              private location: Location,
+              private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
-    this.exerciseFormGroup = new FormGroup({
-      exercise: new FormControl()
-    });
+    this.exerciseFormGroup = this.formBuilder.group({exercise: ""});
 
     this.route.paramMap.subscribe(params => this.muscleGroupName = params.get('muscleGroupName'));
   }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {WorkoutService} from "../shared/workout.service";
 import {Location} from "@angular/common";
 
@@ -24,13 +24,14 @@ export class CreateMuscleGroupComponent implements OnInit {
   private createMuscleGroup: FormGroup;
 
   constructor(private workoutService: WorkoutService,
-              private location: Location) {
+              private location: Location,
+              private formBuilder: FormBuilder) {
 
   }
 
   ngOnInit() {
-    this.createMuscleGroup = new FormGroup({
-      muscleGroup: new FormControl("", Validators.required)
+    this.createMuscleGroup = this.formBuilder.group({
+      muscleGroup: ["", Validators.required]
     });
   }
 
